@@ -70,10 +70,18 @@ view: inventory_items {
     drill_fields: [id, products.item_name, products.id, order_items.count]
   }
   parameter: test_param1 {
-    label: "Test Param"
+    label: "Test Param1"
     description: "Another description"
     type: string
     suggest_explore: inventory_items
     suggest_dimension: inventory_items.total_cost
+  }
+
+  parameter: test_param2 {
+    label: "Test Param2"
+    description: "Another description"
+    type: string
+    suggest_explore: Products
+    suggest_dimension: Products.item_name
   }
 }
