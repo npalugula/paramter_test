@@ -20,7 +20,7 @@ view: products {
 
   dimension: brand {
     type: string
-    sql: ${TABLE}.brand ;;
+    sql:  ${TABLE}.brand ;;
   }
 
   dimension: category {
@@ -70,5 +70,21 @@ view: products {
   measure: count {
     type: count
     drill_fields: [id, item_name, inventory_items_vijaya.count, inventory_items.count, product_sheets.count]
+  }
+  dimension: item_name_1 {
+    type: string
+    sql: (${TABLE}.item_name || "&");;
+  }
+  dimension: category_1 {
+    type: string
+    sql: ${TABLE}.category || "&" ;;
+  }
+
+  parameter: Test_retail_price {
+    type: number
+    label: "Test_retail_price"
+    suggest_explore: products
+    suggest_dimension: products.retail_price
+    suggest_persist_for: "24 hours"
   }
 }
